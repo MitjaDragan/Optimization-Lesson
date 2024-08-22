@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
+
 import './styles.css';
 
 const Details = React.lazy(() => import('./Details'));
-
 
 export const Exercise6 = () => {
   return (
@@ -15,7 +15,9 @@ export const Exercise6 = () => {
           <img src={require('./logo.png')} alt='Restaurant logo' />
           <h1>Your reservation is confirmed.</h1>
         </div>
-        <Details />
+        <Suspense fallback={<div>Loading details...</div>}>
+          <Details />
+        </Suspense>
       </div>
     </div>
   );
